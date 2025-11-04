@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -71,3 +72,7 @@ export default defineConfig([
   },
 ])
 ```
+=======
+# TabsMaker
+A web that make more efficient and interactive the process of making tabs for guitarists
+>>>>>>> 76b8feb64e25d0c0f99887473449821c25ac1dd4
