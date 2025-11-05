@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Input } from "@/components/ui/input"
 
 type Props = {
     style: "Tabs" | "Chords" | "Both"
@@ -22,9 +23,11 @@ type Props = {
     setDetails: (v: string) => void
     showCapo: boolean
     setShowCapo: (v: boolean) => void
+    capoFret?: number
+    setCapoFret?: (v: number) => void
 }
 
-export default function CardStyleDetails({ style, setStyle, tone, setTone, details, setDetails, showCapo, setShowCapo }: Props) {
+export default function CardStyleDetails({ style, setStyle, tone, setTone, details, setDetails, showCapo, setShowCapo, capoFret, setCapoFret }: Props) {
     return (
         <Card className="w-full h-full">
             <CardHeader>
@@ -37,6 +40,7 @@ export default function CardStyleDetails({ style, setStyle, tone, setTone, detai
                         <Label className="hover:bg-accent/50 flex items-start gap-3 rounded-lg border p-3 has-[[aria-checked=true]]:border-green-600 has-[[aria-checked=true]]:bg-green-50 dark:has-[[aria-checked=true]]:border-green-900 dark:has-[[aria-checked=true]]:bg-green-950">
                             <Checkbox
                                 id="toggle-2"
+                                checked={showCapo}
                                 className="data-[state=checked]:border-green-600 data-[state=checked]:bg-green-600 data-[state=checked]:text-white dark:data-[state=checked]:border-green-700 dark:data-[state=checked]:bg-green-700"
                                 onCheckedChange={(checked) => setShowCapo(!!checked)}
                             />
@@ -46,6 +50,19 @@ export default function CardStyleDetails({ style, setStyle, tone, setTone, detai
                                 </p>
                             </div>
                         </Label>
+                        {showCapo && (
+                            <div className="pt-2">
+                                <FieldLabel htmlFor="capo-fret">Capo Fret</FieldLabel>
+                                <Input
+                                    id="capo-fret"
+                                    type="text"
+                                    value={capoFret ?? ''}
+                                    onChange={(e) => setCapoFret && setCapoFret(parseInt(e.target.value) || 0)}
+                                    className="w-24"
+                                    placeholder="1"
+                                />
+                            </div>
+                        )}
                     </div>
 
                     <div>

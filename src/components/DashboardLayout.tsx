@@ -5,6 +5,7 @@ import songsData from "../data/songs.json"
 // UI primitives not required in this layout file
 import CardReferences from "./CardReferences"
 import CardVideo from "@/components/CardVideo"
+import CardTabsCreation from "./CardTabsCreation"
 
 export default function DashboardLayout({
     artist,
@@ -21,6 +22,10 @@ export default function DashboardLayout({
     setDetails,
     showCapo,
     setShowCapo,
+    capoFret,
+    setCapoFret,
+    selectedLyrics,
+    setSelectedLyrics,
 }: any) {
     const artists = Object.keys(songsData || {})
     const albums = artist && (songsData as any)[artist] ? Object.keys((songsData as any)[artist]) : []
@@ -55,6 +60,8 @@ export default function DashboardLayout({
                         setDetails={setDetails}
                         showCapo={showCapo}
                         setShowCapo={setShowCapo}
+                        capoFret={capoFret}
+                        setCapoFret={setCapoFret}
                     />
                 </div>
                 <div className="h-full">
@@ -74,14 +81,18 @@ export default function DashboardLayout({
                         sections={lyricsSections}
                         rawText={lyricsRaw}
                         onArrange={(arranged) => {
-                            // format arranged sections into a details string with chords above each section
-                            const out = arranged
-                                .map((a) => (a.chords ? a.chords + "\n" + a.text : a.text))
-                                .join("\n\n")
-                            setDetails(out)
+                            // No longer updating details, instead updating selectedLyrics state
+                            setSelectedLyrics(arranged)
                         }}
                     />
                 </div>
+                <div className="h-full">
+                    <CardTabsCreation 
+                        selectedLyrics={selectedLyrics}
+                        onAddTab={(sectionTitle, tab) => setDetails((prev: string) => (prev ? prev + "\n\n" + tab : tab))}
+                    />
+                </div>
+
                 <div className="h-full">
                     <CardVideo
                         artist={artist}
@@ -90,6 +101,7 @@ export default function DashboardLayout({
                         onUse={(tab: string) => setDetails((prev: string) => (prev ? prev + "\n\n" + tab : tab))}
                     />
                 </div>
+
             </div>
         </div>
     )

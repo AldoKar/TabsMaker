@@ -17,7 +17,9 @@ export default function ViewPage({
     style,
     details,
     showCapo,
-    tone
+    capoFret,
+    tone,
+    selectedLyrics
 }: {
     artist?: string
     album?: string
@@ -25,16 +27,17 @@ export default function ViewPage({
     style?: "Tabs" | "Chords" | "Both"
     details?: string
     showCapo?: boolean
+    capoFret?: number
     tone?: "Standard" | "Drop D" | "Half Step Down"
+    selectedLyrics?: Array<{ title: string; text: string; details: string }>
 }) {
     // Datos falsos para mostrar la estructura de una tablatura
     const fakeArtist = "The Neighbourhood"
     const fakeAlbum = "Wiped Out!"
-    const fakeSong = "Sweater Weather"
+    const fakeSong = "Wiped Out!"
 
     const exampleTab = [
-        `Song: ${song || fakeSong}`,
-        `Artist: ${artist || fakeArtist}    Album: ${album || fakeAlbum}`,
+        `Artist: ${artist || fakeArtist} | Album: ${album || fakeAlbum} | Song: ${song || fakeSong} | Made by: TabsMaker User in TabsMaker`,
         "",
         "e|------------------0---0---2---3---|",
         "B|------------------1---1---3---0---|",
@@ -92,14 +95,33 @@ export default function ViewPage({
                         </div>
                         <div className="mb-4">
                             <div className="text-sm text-gray-500">Capo</div>
-                            <div className="text-lg mb-3">{showCapo ? "On" : "Off"}</div>
+                            <div className="text-lg mb-3">{showCapo && capoFret ? `Fret ${capoFret}` : "Off"}</div>
                         </div>
                     </div>
 
                     <div className="mb-4">
                         <div className="text-sm text-gray-500">Details</div>
-                        <div className="prose max-w-none text-sm">{details || "No details provided."}</div>
+                        <div className="prose max-w-none text-sm">{details || "I use delay in the first intro, enjoy TabsMaker."}</div>
                     </div>
+
+                    {selectedLyrics && selectedLyrics.length > 0 && (
+                        <div className="mb-4">
+                            <div className="space-y-4">
+                                {selectedLyrics.map((lyric, idx) => (
+                                    <div key={idx} className="border rounded-md p-3 bg-muted/30">
+                                        <div className="font-medium text-sm mb-2">{lyric.title}</div>
+                                        {lyric.details && (
+                                            <div className="text-xs text-muted-foreground mb-2 italic">
+                                                {lyric.details}
+                                            </div>
+                                        )}
+                                        <div className="whitespace-pre-wrap text-sm">{lyric.text}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
                     <div className="mt-4">
                         <h3 className="text-md font-medium mb-2">Tablature</h3>
                         <TablaturePreview tabLines={exampleTab} />

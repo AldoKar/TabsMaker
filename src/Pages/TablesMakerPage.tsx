@@ -15,7 +15,9 @@ export function TablesMakerPage() {
     const [style, setStyle] = useState<"Tabs" | "Chords" | "Both">("Tabs")
     const [details, setDetails] = useState("")
     const [showCapo, setShowCapo] = useState(false)
+    const [capoFret, setCapoFret] = useState(1)
     const [tone, setTone] = useState<"Standard" | "Drop D" | "Half Step Down">("Standard")
+    const [selectedLyrics, setSelectedLyrics] = useState<Array<{ title: string; text: string; details: string }>>([])
 
     return (
         <ResizablePanelGroup direction="horizontal" className="w-full h-full overflow-visible">
@@ -36,12 +38,16 @@ export function TablesMakerPage() {
                         setDetails={setDetails}
                         showCapo={showCapo}
                         setShowCapo={setShowCapo}
+                        capoFret={capoFret}
+                        setCapoFret={setCapoFret}
+                        selectedLyrics={selectedLyrics}
+                        setSelectedLyrics={setSelectedLyrics}
                     />
                 </div>
             </ResizablePanel>
             <ResizableHandle withHandle />
             <ResizablePanel defaultSize={70}>
-                <ViewPage artist={artist} album={album} song={song} style={style} details={details} showCapo={showCapo} tone={tone} />
+                <ViewPage artist={artist} album={album} song={song} style={style} details={details} showCapo={showCapo} capoFret={capoFret} tone={tone} selectedLyrics={selectedLyrics} />
             </ResizablePanel>
         </ResizablePanelGroup>
     )

@@ -70,37 +70,8 @@ export default function CardSong({
             </CardHeader>
             <CardContent>
                 <div className="flex flex-col gap-4">
-                    <div className="flex items-center gap-2">
-                        <Label className="hover:bg-accent/50 flex items-start gap-3 rounded-lg border p-3 has-[[aria-checked=true]]:border-green-600 has-[[aria-checked=true]]:bg-green-50 dark:has-[[aria-checked=true]]:border-green-900 dark:has-[[aria-checked=true]]:bg-green-950">
-                            <Checkbox
-                                id="toggle-2"
-                                className="data-[state=checked]:border-green-600 data-[state=checked]:bg-green-600 data-[state=checked]:text-white dark:data-[state=checked]:border-green-700 dark:data-[state=checked]:bg-green-700"
-                                onCheckedChange={(checked) => toggleCreateMode(!!checked)}
-                            />
-                            <div className="grid gap-1.5 font-normal">
-                                <p className="text-sm leading-none font-medium">
-                                    Create the tab of your own song
-                                </p>
-                            </div>
-                        </Label>
-                    </div>
+                    
 
-                    {createMode ? (
-                        <div className="grid gap-2">
-                            <div className="grid gap-2">
-                                <Label>Artist</Label>
-                                <Input value={newArtist} onChange={(e) => setNewArtist(e.target.value)} placeholder="Artist name" />
-                            </div>
-                            <div className="grid gap-2">
-                                <Label>Album</Label>
-                                <Input value={newAlbum} onChange={(e) => setNewAlbum(e.target.value)} placeholder="Album name" />
-                            </div>
-                            <div className="grid gap-2">
-                                <Label>Song</Label>
-                                <Input value={newSong} onChange={(e) => setNewSong(e.target.value)} placeholder="Song name" />
-                            </div>
-                        </div>
-                    ) : (
                         <>
                             <div className="grid gap-2 ">
                                 <Label className="w-full">Artist</Label>
@@ -150,7 +121,7 @@ export default function CardSong({
                                 </Select>
                             </div>
                         </>
-                    )}
+                    
                 </div>
             </CardContent>
         </Card>
