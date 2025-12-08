@@ -6,10 +6,9 @@ A modern web application for creating, managing, and sharing guitar tabs and cho
 
 - **Song Management**: Select from existing songs or create new entries with artist, album, and song information
 - **Tab Creation**: Create guitar tabs with an intuitive interface
-- **Chord Support**: Add and manage chords for your songs
+- **Chord Support**: Add and manage chords for your songs (In development)
 - **Lyrics Integration**: View and work with song lyrics
 - **Style Customization**: Choose between tabs, chords, or both
-- **Spotify Integration**: Connect with Spotify for song information
 - **Modern UI**: Clean, dark-themed interface with responsive design
 
 ## 🚀 Getting Started
@@ -72,15 +71,14 @@ TabsMaker/
 
 ## 📸 Screenshots
 
-[Add your screenshots here]
+<img width="672" height="516" alt="image" src="https://github.com/user-attachments/assets/405d1e3f-acaa-4076-b18e-cf7da3a53a8f" />
 
-## 🤝 Contributing
+<img width="2559" height="1599" alt="image" src="https://github.com/user-attachments/assets/140edaba-9643-4299-afe3-c774cc3bd13a" />
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+<img width="2559" height="1599" alt="image" src="https://github.com/user-attachments/assets/63aadd5f-de55-4085-a092-4292d9f767a4" />
 
-## 📝 License
 
-This project is open source and available under the [MIT License](LICENSE).
+
 
 ## 👤 Author
 
